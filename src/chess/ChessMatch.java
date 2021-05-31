@@ -26,6 +26,6 @@ public class ChessMatch {
 
     //INICIA AS PECAS NO TABULEIRO
     private void InicialSetup(){
-        board.placePiece(new Rook(board, Color.WHITE), new Position(2, 1));
+        board.placePiece(new Rook(board, Color.WHITE), new Position(9, 1));
     }
 }
