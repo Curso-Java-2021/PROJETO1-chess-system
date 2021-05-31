@@ -1,7 +1,6 @@
 package chess;
 
 import boardGame.Board;
-import boardGame.Position;
 import chess.pieces.Rook;
 
 public class ChessMatch {
@@ -24,8 +23,13 @@ public class ChessMatch {
         return mat;
     }
 
+    //DEFINE A POSICAO DA NOVA PECA NO FORMATO LETRA+NUMERO
+    private void placeNewPiece(char column, int row, ChessPiece piece){
+        board.placePiece(piece, new ChessPosition(column, row).toPosition());
+    }
+
     //INICIA AS PECAS NO TABULEIRO
     private void InicialSetup(){
-        board.placePiece(new Rook(board, Color.WHITE), new Position(9, 1));
+        placeNewPiece('a', 1, new Rook(board, Color.WHITE));
     }
 }
