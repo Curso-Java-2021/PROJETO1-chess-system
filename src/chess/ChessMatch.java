@@ -1,12 +1,15 @@
 package chess;
 
 import boardGame.Board;
+import boardGame.Position;
+import chess.pieces.Rook;
 
 public class ChessMatch {
     private Board board; //tabuleiro
 
     public ChessMatch(){
         board = new Board(8, 8);
+        InicialSetup();
     }
 
     //Retorna a posicao de tds as pecas
@@ -19,5 +22,10 @@ public class ChessMatch {
             }
         }
         return mat;
+    }
+
+    //INICIA AS PECAS NO TABULEIRO
+    private void InicialSetup(){
+        board.placePiece(new Rook(board, Color.WHITE), new Position(2, 1));
     }
 }
