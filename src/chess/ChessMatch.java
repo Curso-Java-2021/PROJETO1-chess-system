@@ -30,6 +30,6 @@ public class ChessMatch {
 
     //INICIA AS PECAS NO TABULEIRO
     private void InicialSetup(){
-        placeNewPiece('a', 1, new Rook(board, Color.WHITE));
+        placeNewPiece('a', 1, new Rook(board, Color.BLACK));
     }
 }
