@@ -3,6 +3,7 @@ package chess;
 import boardGame.Board;
 import boardGame.Piece;
 import boardGame.Position;
+import chess.pieces.King;
 import chess.pieces.Rook;
 
 public class ChessMatch {
@@ -80,6 +81,7 @@ public class ChessMatch {
 
     //INICIA AS PECAS NO TABULEIRO
     private void InicialSetup(){
-        placeNewPiece('a', 1, new Rook(board, Color.BLACK));
+        placeNewPiece('d', 1, new Rook(board, Color.BLACK));
+        placeNewPiece('e', 1, new King(board, Color.BLACK));
     }
 }
