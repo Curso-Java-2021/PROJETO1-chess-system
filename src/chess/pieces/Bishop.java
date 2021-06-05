@@ -5,6 +5,7 @@ import boardGame.Position;
 import chess.ChessPiece;
 import chess.Color;
 
+//BISPO
 public class Bishop extends ChessPiece {
     public Bishop(Board board, Color color) {
         super(board, color);
