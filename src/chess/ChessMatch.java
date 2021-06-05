@@ -15,6 +15,7 @@ public class ChessMatch {
     private int turn; //turno
     private Color currentPlayer; //jogador atual
     private boolean check;
+    private boolean checkMate;
 
     private List <Piece> piecesOnTheBoard = new ArrayList<>();
     private List <Piece> capturedPieces = new ArrayList<>();
@@ -29,6 +30,10 @@ public class ChessMatch {
 
     public boolean getCheck(){
         return check;
+    }
+
+    public boolean getCheckMate(){
+        return checkMate;
     }
 
     public int getTurn() {
@@ -76,7 +81,12 @@ public class ChessMatch {
 
         check = (testCheck(opponent(currentPlayer))) ? true : false;
 
-        nextTurn();
+        if(testCheckMate(opponent(currentPlayer))){
+            checkMate = true;
+        }
+        else{
+            nextTurn();
+        }
 
         return (ChessPiece) capturedPiece;
     }
@@ -148,7 +158,7 @@ public class ChessMatch {
     }
 
     //VARRE AS PECAS ADVERSARIAS E VERIFICA SE HA XEQUE
-    private boolean testCheck(Color color){
+    private boolean testCheck (Color color){
         Position kingPosition = king(color).getChessPosition().toPosition();
         List <Piece> opponetPieces = piecesOnTheBoard.stream().filter(x -> ((ChessPiece)x).getColor() == opponent(color)).collect(Collectors.toList());
 
@@ -159,6 +169,37 @@ public class ChessMatch {
             }
         }
         return false;
+    }
+
+    //VARRE AS PECAS ALIADAS E VERIFICA SE HA XEQUE MATE
+    private boolean testCheckMate (Color color){
+        if(!testCheck(color)){
+            return false;
+        }
+
+        List <Piece> list = piecesOnTheBoard.stream().filter(x -> ((ChessPiece)x).getColor() == color).collect(Collectors.toList());
+        for(Piece p : list){
+            boolean[][] mat = p.possibleMoves();
+            for(int i = 0; i < board.getRows(); i++){
+                for(int j = 0; j < board.getColumns(); j++){
+                    if(mat[i][j]){
+                        Position source = ((ChessPiece)p).getChessPosition().toPosition();
+                        Position target = new Position(i, j);
+
+                        Piece capturedPiece = makeMove(source, target);
+
+                        boolean testCheck = testCheck(color);
+
+                        undoMove(source, target, capturedPiece);
+
+                        if(!testCheck){
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     //DEFINE A POSICAO DA NOVA PECA NO FORMATO LETRA+NUMERO
