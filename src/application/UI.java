@@ -94,7 +94,7 @@ public class UI {
         System.out.print(ANSI_RESET);
 
         for(int i = 0; i < pieces.length; i++){
-            System.out.print(ANSI_BLUE);
+            System.out.print(ANSI_WHITE);
             System.out.print((8 - i) + " ");
             System.out.print(ANSI_RESET);
             for(int j = 0; j < pieces.length; j++){
@@ -105,7 +105,7 @@ public class UI {
             System.out.print(ANSI_RESET);
             System.out.println();
         }
-        System.out.print(ANSI_BLUE);
+        System.out.print(ANSI_WHITE);
         System.out.println("  a b c d e f g h");
         System.out.print(ANSI_RESET);
     }
@@ -117,7 +117,7 @@ public class UI {
         System.out.print(ANSI_RESET);
 
         for(int i = 0; i < pieces.length; i++){
-            System.out.print(ANSI_BLUE);
+            System.out.print(ANSI_WHITE);
             System.out.print((8 - i) + " ");
             System.out.print(ANSI_RESET);
             for(int j = 0; j < pieces.length; j++){
@@ -128,7 +128,7 @@ public class UI {
             System.out.print(ANSI_RESET);
             System.out.println();
         }
-        System.out.print(ANSI_BLUE);
+        System.out.print(ANSI_WHITE);
         System.out.println("  a b c d e f g h");
         System.out.print(ANSI_RESET);
     }
